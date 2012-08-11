@@ -206,10 +206,10 @@
 }
 
 // Drop shadows
-@mixin box-shadow($shadow) {
-  -webkit-box-shadow: $shadow;
-     -moz-box-shadow: $shadow;
-          box-shadow: $shadow;
+@mixin box-shadow($shadow, $shadow2: 0 0 0 transparent, $shadow3: 0 0 0 transparent, $shadow4: 0 0 0 transparent) {
+  -webkit-box-shadow: $shadow, $shadow2, $shadow3, $shadow4;
+     -moz-box-shadow: $shadow, $shadow2, $shadow3, $shadow4;
+          box-shadow: $shadow, $shadow2, $shadow3, $shadow4;
 }
 
 // Transitions
