@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= image_tag("White_Logo_6-22.png", :alt => "TAG", :style => "height:40px; float:left;") %>
+          <p class="brand">You're it!</p>
+            <ul>
+              <li><a>SETUP YOUR ACCOUNT</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="row">
+        <div class="span12">
+        <h1>Let's get started!</h1>
+        <h2>Select a Practice Session</h2>
+			<% @locations.each do |location| %>
+			      <div><%= location.address %>
+			      <%= link_to "Listing Times", {:controller => "events", :action => "datetime_list", :location_id => location.id}, :class => 'event' -%></div>
+			<% end %>
+	<br>
+  	<%= link_to "Create A Event", {:controller => "events", :action => "new" }, :class => 'event' -%>
+  	<%= image_tag("guyTAGgradient.png", :id => 'background-img', :class => "bg") %>
+      	
+      <div class="clearfooter"></div>
+      <div class="footer">
+        <p>&copy; The Active Generation 2012</p>
+      </div>
+  </body>
+</html>

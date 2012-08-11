@@ -1,0 +1,10 @@
+<h1>Listing times</h1>
+
+<%= form_for(@team) do |f| %>
+  <% @events.each do |event| %>
+    <div><%= event.datetime.time %>
+    <%= submit_tag 'register', :name => "register[#{event.id}]" %>
+    <%= link_to "Teamowner Information", {:controller => "teams", :action => "teamowner_information", :event_id => event.id} %>
+    <%= link_to "Event Information", {:controller => "events", :action => "event_information", :event_id => event.id} %></div>
+  <% end %>
+<% end %>

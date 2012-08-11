@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TAG | Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery.countdown" %>
+    <%= stylesheet_link_tag "dashboard" %>
+    <%= stylesheet_link_tag 'bootstrap-responsive.css' %>
+    <%= stylesheet_link_tag "jquery.countdown.css" %>
+
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <script type="text/javascript">
+    $(function () {
+      var practiceSession = new Date();
+      practiceSession = new Date(practiceSession.getFullYear() + 0, 7 - 1, 26);
+      $('#practiceSessioncountdown').countdown({until: practiceSession});
+      $('#year').text(practiceSession.getFullYear());
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+      var peExam = new Date();
+      peExam = new Date(peExam.getFullYear() + 0, 8 - 1);
+      $('#peExam').countdown({until: peExam});
+      $('#year').text(peExam.getFullYear());
+    });
+    </script>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+          <a href="/home" class="brand" ><%= image_tag("White_Logo_6-22.png", :alt => "TAG", :style => "height:40px") %></a>
+          <p class="brand">You're it!</p>
+            <ul id="collapse">
+             <li><%= link_to "Team", '/teams/home' %></li>
+             <li class="divider-vertical"></li>
+             <li><%= link_to "Class", '/class' %></li>
+             <li class="divider-vertical"></li>
+             <li><%= link_to "Events", '/funs/home' %></li>
+             <li class="divider-vertical"></li>
+             <li><%= link_to "Tools", '/tools' %></li>
+             <li class="divider-vertical"></li>
+           </ul>
+           <ul id="pull-right">
+               <li><%= link_to "Days Remaining"%><li>
+                <li id="peExam"></li>
+               <li><%= link_to "Team Points", '' %></li>
+           </ul>
+      </div>
+      <div class="row-fluid">
+        <div class="span2" style="padding-top:10px;">
+            <h2 style="color:black; text-shadow:none; font-size:23px; text-transform:uppercase; margin-bottom:-8px;"><%= Time.now.strftime("%A") %></h2>
+            <h2 style="color:black; text-shadow:none; font-size:13.5px; text-transform:uppercase;"><%= Time.now.strftime("%B %d, %Y") %></h2>        
+            <h2>MY PROGRESS</h2>
+            <h2>MY ACTIVITY</h2>
+            <h2>MY TEAMMATE</h2>
+            <h2>PRACTICE SESSION</h2>
+            <p><a class="btn btn-dashboard">Notice</a><br><br></p>
+            <h2>RECOMMENDED EVENT</h2>
+            <h2 id="practiceSessioncountdown"></h2>
+            <p><a class="btn btn-dashboard">Talk to An Athlete</a></p>
+            </div>
+    <%= yield %>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "bootstrap-collapse" %>
+    <%= javascript_include_tag "bootstrap-transition" %>
+    <%= javascript_include_tag "bootstrap-alert" %>
+    <%= javascript_include_tag "bootstrap-modal" %>
+    <%= javascript_include_tag "bootstrap-dropdown" %>
+    <%= javascript_include_tag "bootstrap-scrollspy" %>
+    <%= javascript_include_tag "bootstrap-tooltip" %>
+    <%= javascript_include_tag "bootstrap-popover" %>
+    <%= javascript_include_tag "bootstrap-carousel" %>
+    <%= javascript_include_tag "bootstrap-typeahead" %>
+  </body>
+</html>

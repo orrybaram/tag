@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= image_tag("White_Logo_6-22.png", :alt => "TAG", :style => "height:40px; float:left;") %>
+          <p class="brand">You're it!</p>
+            <ul>
+              <li><a>SETUP YOUR ACCOUNT</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="row">
+        <div class="span12">
+        <h1>Let's get started!</h1>
+        <h2>Select 3 Sports Tracks:</h2>
+			<%= form_tag('/user_sport_preferences') do %>
+
+			  <% @sports.each do |sport| %>
+			    <div>
+			    	<p style="font-family: 'Rockwell'; color: white; text-shadow: 2px 2px #000; font-size: 16px; margin-bottom: 5px">
+			    	<%= check_box_tag "sport_ids[]", sport.id %>
+			    	<%= sport.name %><p></div>
+			      <%= submit_tag 'Listing Locations', :class => 'btn btn-primary btn-large pull-right', :style => "font-family:Rockwell; font-size: 16px; float: left; postion: relative;" %>
+			      <% end %>
+        <% end %>
+    <%= image_tag("guyTAGgradient.png", :id => 'background-img', :class => "bg") %>
+
+    </div> <!-- /container -->
+    <div class="clearfooter"></div>
+    <div class="footer">
+      <p>&copy; The Active Generation 2012</p>
+    </div>
+  </body>
+</html>

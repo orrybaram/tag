@@ -1,0 +1,7 @@
+<h1>Listing teams information</h1>
+
+  <% @teams.each do |team| %>
+    <div><%= team.name %></div>
+    <div><%= team.event.sport.name %></div>
+    <div><%= team.sport_level.name %></div>
+  <% end %>

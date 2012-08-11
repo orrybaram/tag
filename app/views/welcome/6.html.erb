@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+    <!-- Le styles -->
+    <%= stylesheet_link_tag 'apptrial-2' %>
+
+    <style type="text/css">
+      body {
+        padding-top: 10px;
+        background: url(/assets/runningkids.png) repeat fixed;
+        background-size: 100%;
+      }
+      h1 {
+        font-family: 'Copse';
+      }
+    </style>
+    <%= stylesheet_link_tag 'apptrial-2-responsive.css' %>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <img alt="TAG" src="/assets/LargeCanvas.png" class="brand">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <div class="nav pull-right">
+              <ul class="nav">
+                <li class="active"><a href="#">How It Works</a></li>
+                <li><a href="#about">Become A Mentor</a></li>
+                <li><a href="#contact">About Us</a></li>
+              </ul>
+          </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+      <div class="content">  
+        <table cellspacing="5" class="content-table">
+        <tr valign="top" align="left" style="padding-top:0; margin-top:0;">
+        <td width="400" style="background-color:black; border-top-left-radius:1em; border-bottom-left-radius:1em;padding:20px"><h2 style="color:white;">NEWSFEED</h2></td>
+        <td width="1" bgcolor="gray" padding="0"><BR></td>
+        <td width="300" valign="top" align="left" style="padding:20px">
+        <h3><strong>Recreation Re-envisioned.</strong></h3>
+        <p>Set a Goal<br>Connect with a Buddy<br>Earn Rewards!</p>
+        </td>
+        </tr>
+        </table>
+      </div>
+        
+      
+      </div>
+    <footer>
+      <p>&copy; TAG USA, Inc. 2012</p>
+    </footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "bootstrap-collapse" %>
+    <%= javascript_include_tag "bootstrap-transition" %>
+    <%= javascript_include_tag "bootstrap-alert" %>
+    <%= javascript_include_tag "bootstrap-modal" %>
+    <%= javascript_include_tag "bootstrap-dropdown" %>
+    <%= javascript_include_tag "bootstrap-scrollspy" %>
+    <%= javascript_include_tag "bootstrap-tooltip" %>
+    <%= javascript_include_tag "bootstrap-popover" %>
+    <%= javascript_include_tag "bootstrap-carousel" %>
+    <%= javascript_include_tag "bootstrap-typeahead" %>
+  </body>
+</html>

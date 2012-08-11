@@ -1,0 +1,24 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :sport %>
+  <%= f.select(:sport_id, options_for_select(@sports.collect {|sport| [sport.name, sport.id]})) %></br>  
+
+    <%= f.label :datetime %>
+    <%= f.datetime_select :datetime, :ampm => true %></br>
+
+    <%= label_tag :location_address %>
+    <%= text_field_tag 'location_address' %></br>
+
+    <%= f.submit %>
+<% end %>

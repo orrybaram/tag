@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-JP" xml:lang="ja-JP">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="ja" />
+    <meta name="robots" content="all" />
+   
+    <title> The Active Generation | Recreation Re-envisioned. </title>
+   
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="imagetoolbar" content="no" />
+   
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      /*<![CDATA[*/
+      body {
+        margin: 0;
+        background-color: black;
+      }
+      h1, h2, h3, h4, p {
+        margin: 0;
+        padding: 0; 
+      }
+      #site-nav {
+        width: 100%;
+        min-height: 70px;
+        padding:  0 10px;
+        float: none;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      #site-nav h1 {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 0.8em;
+        padding-top: 10px;
+      }
+
+      #site-nav h1 a { color: #D26; }
+      #site-nav h1 a:hover { color: #A2C; }
+
+      #site-nav h2 {
+        font-size: 17px;
+        font-weight: normal;
+        margin-bottom: 0.3em;
+      }
+
+      #site-nav ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 12px;
+      }
+
+      #site-nav li {
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px;
+      }
+
+      #site-nav li a {
+        display: block;
+        padding: 3px 5px;
+      }
+
+      #site-nav li.current {
+        background: #C8C5C2;
+      }
+
+      #site-nav li.current a { color: white; }
+      #site-nav li.current a:hover { color: #D26; }
+
+      #site-nav li ul { 
+        margin-bottom: 0;
+      }
+
+      #site-nav li li {
+        font-size: 11px;
+        line-height: 1.4em;
+      }
+
+      #site-nav li li a {
+        padding-left: 15px;
+      }
+
+      #site-nav li.selected li a {
+        padding: 3px;
+        background: none;
+      }
+
+      #site-nav li.selected li a:hover {
+        color: #D26;
+      }
+      #container {
+        background-color: white;
+        overflow: hidden;
+      }
+
+      .row {
+        width: auto;
+        padding: 2%;
+        margin-top: 0;
+        min-height: 575px;
+        margin-bottom: 30px;
+      }
+
+      [class*="span"] {
+        float: left;
+      }
+
+      .span4 {
+        width: 80%;
+        padding: 5px;
+        margin-left: 12%;
+        padding-right: 0;
+        padding-bottom: 3px;
+        margin-top: 60px;
+        float: none;
+      }
+      .span4 h1 {
+        font-size: 16px;
+        font-weight: lighter;
+        font-family: 'Copse';
+        color: white;
+        line-height: 16px;
+        letter-spacing: 1px;
+        margin-top: 5px;
+        margin-bottom: 8px;
+        text-shadow: 0.1em 0.1em 0.2em black;
+      }
+      .best_day {
+
+      }
+      .span3 {
+        width:100%;
+        float: left;
+        padding-left: 15px;
+        padding-top: 0;
+        margin-right: 10px;
+        text-align: left;
+        margin-left: 12%;
+      }
+      .span3 h4 {
+        font-size: 12px;
+        font-family: 'Cabin';
+        text-transform: uppercase;
+        font-weight: normal;
+        margin: 10px 0 10px 0;
+      }
+      .span3 h2 {
+        font-size: 12px;
+        font-weight: normal;
+        color: white;
+        line-height: 12px;
+        letter-spacing: 1.5px;
+      }
+      .span3 p {
+        font-family: 'Cabin';
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 12px; 
+        padding: 2px;
+      }
+      .span3 img {
+        width: 30%;
+        float: left;
+        vertical-align: middle;
+        border: 0;
+        padding-left: 10px;
+        margin-right: 10px;
+        -ms-interpolation-mode: bicubic;
+      }
+      .span2c {
+        width: 15%;
+        padding-left: 10px;
+        margin-top: -44px;
+        height: 10%;
+      }
+      .span2d {
+        width: 17%;
+        padding-left: 10px;
+        margin-top: -30px;
+      }
+      .span2e {
+        width: 20%;
+        padding-left: 10px;
+        margin-top: -30px;
+      }
+      .span2c h2, p, .span2d h2, p, .span2e h2, p {
+        font-family: 'Cabin';
+        font-size: 15px;
+        font-weight: normal;
+      }
+      .span2d h6, .span2e h6 {
+        margin-top: 20px;
+        font-family: "Copse";
+        font-weight: bold;
+        font-size: 50px;
+        color: rgba(88,88,88,0.6);
+      }
+      .span1c-next {
+        width: auto;
+        background-color: #FF9500;
+      }
+
+      .span1c-next h2 {
+        font-size: 13px;
+        font-weight: bold;
+        color: black;
+        text-align: right;
+        padding-left: 10px;
+        padding-right: 15px; 
+        font-family: "Copse";
+      }
+      .best_day {
+        height: auto;
+        width: auto;
+        background-image: -ms-linear-gradient(top, #585858, #000000);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#585858), to(#000000));
+        background-image: -webkit-linear-gradient(top, #585858, #000000);
+        background-image: -o-linear-gradient(top, #585858, #000000);
+        background-image: linear-gradient(top, #585858, #000000);
+        background-image: -moz-linear-gradient(top, #585858, #000000);
+        background-repeat: repeat-x;
+        border: 1px transparent #000000;
+        *border: 0;
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px;
+      }
+      .best_day h2 {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-top: 5px;
+        font-family: "Copse";
+        font-size: 15px;
+        line-height: 15px;
+        color: white;
+        font-weight: normal;
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+      }
+      .best_day h6 {
+        margin: 0;
+        text-align: center;
+        font-family: "Copse";
+        font-size: 50px;
+        color: #F0AB02;
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+        margin-top: -20px;
+      }
+      .best_day hr {
+        border: 0;
+        margin: 0;
+        margin-left: 35px;
+        color: black;
+        background-color:  rgba(0,0,0,0.7);
+        height: 3px;
+      }
+      @media (min-width: 460px) and (max-width: 639px) {
+        #container {
+          height: 300px;
+        }
+      }
+
+      @media (min-width: 640px) and (max-width: 767px) {
+        #container {
+          height: 375px;
+        }
+        #site-nav {
+          width: auto;
+          position: relative;
+          left: auto;
+          top: auto;
+          padding-top: 0px;
+          height: auto;
+          margin-bottom: 20px;
+        }
+      }
+      #profile {
+        position: absolute;
+        left: -60px;
+        bottom:230px;
+        z-index: 3000;
+        background-color: #585858;
+        height: 300px;
+        width: 300px;
+        text-align: center;
+        color: white;
+        border-radius: 300px;
+      }
+      #hotspot-2 {
+        position: absolute;
+        left: 280px;
+        bottom:225px;
+        z-index: 3000;
+        background-color: rgba(255,0,0,0.8);
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        line-height: 100px;
+        color: white;
+        border-radius: 125px;
+      }
+      #hotspot-3 {
+        position: absolute;
+        left: 330px;
+        top:20px;
+        z-index: 3000;
+        background-color: rgba(255,0,0,0.8);
+        height: 150px;
+        width: 150px;
+        text-align: center;
+        line-height: 150px;
+        color: white;
+        border-radius: 125px;
+      }
+      @media (min-width: 768px) and (max-width: 979px) {
+        #container {
+          height: 415px;
+        }
+      }
+
+      @media (min-width: 980px) and (max-width: 1079px) {
+        #container {
+          height: 490px;
+        }
+      }
+
+      @media (min-width: 1080px) and (max-width: 1199px) {
+        #container {
+          height: 525px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        #container {
+          height: 550px;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+        $('#hotspot-2').hover(function(){
+          $(this).animate({height:"250px", width:"250px"}, 50);
+        }, function() {
+          $(this).animate({height: '100px', width:"100px"}, 50);
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#hotspot-3").hover(function(){
+          $(this).animate({height:"500px", width:"500px"}, 50);
+        }, function() {
+          $(this).animate({height: '150px', width:"150px"}, 50);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav id="site-nav" style="height;10%;padding-left:10px;">
+        <img src="/assets/White_Logo_6-22.png" style="height:10%;">
+    </nav> <!-- #site-nav -->
+    <div id="container">
+      <div id="profile">
+          <div class="row">
+            <div class="span4">
+              <h1><strong>PeetaD12</strong><span style="font-family: 'Quicksand';text-shadow:'0 0.05em 0 #ffffff';"> | Log Out </span></h1>
+            </div>
+            <div class="span3">
+              <img alt="TAG" src="/assets/avatar.png">
+              <p>TEAM: <strong>EVERDEEN</strong></p>
+              <p>Partner: Jared M.</p>
+              <p>TAG Points:</p>
+              <p><a class="btn" href="#">recommended activity &raquo;</a></p>
+              <p><a class="btn" href="#">watch skill videos &raquo;</a></p>
+            </div>
+      </div>
+      <div id="hotspot-2">
+          KEY 2
+      </div>
+      <div id="hotspot-3">
+          KEY 3
+      </div>
+      <div class="row">
+        <div class="span4">
+          <h1><strong>PeetaD12</strong><span style="font-family: 'Quicksand';text-shadow:'0 0.05em 0 #ffffff';"> | Log Out </span></h1>
+        </div>
+        <div class="span3">
+          <h4>MY DASHBOARD</h4>
+          <img alt="TAG" src="/assets/avatar.png">
+          <p>TEAM: <strong>EVERDEEN</strong></p>
+          <p>Partner: Jared M.</p>
+          <p>TAG Points:</p>
+          <p><a class="btn" href="#">recommended activity &raquo;</a></p>
+          <p><a class="btn" href="#">watch skill videos &raquo;</a></p>
+        </div>
+        <div class="span2c">
+            <div class="best_day"><h2>YOUR BEST DAY:</h2>
+            <hr>
+            <h6>304</h6>
+            </div>
+        </div>
+        <div>
+          <img src="/assets/graph_sample.png" style="height:20%;width:30%">
+        </div>
+    </div>
+  </body>
+</html>

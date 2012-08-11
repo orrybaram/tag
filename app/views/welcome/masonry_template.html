@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery Masonry</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+  <%= stylesheet_link_tag 'style.css' %>
+  
+  <%= javascript_include_tag "modernizr-transitions.js" %>
+  <%= javascript_include_tag "jquery-1.7.1.min.js" %>
+  <%= javascript_include_tag "jquery.masonry.min.js" %>
+</head>
+
+<body class="homepage">
+  
+  <nav id="site-nav">
+  </nav> <!-- #site-nav -->
+  
+  <section id="content">
+    <div id="container" class="transitions-enabled clearfix">
+    <div class="item image" style="width:350px;">
+      <image src="/assets/Dargie.png">
+    </div>
+  
+  <div class="item image col2" style="width:150px;">
+    <image src="/assets/marcus_rance.jpg">
+  </div>
+  
+</div> <!-- #container -->
+    
+    <footer id="site-footer">
+    </footer>
+    
+  </section> <!-- #content -->
+
+  <script>
+    $(function(){
+      
+      var $container = $('#container');
+      
+      $container.masonry({
+        itemSelector: '.item',
+        columnWidth: 200,
+        isAnimated: !Modernizr.csstransitions
+      });
+    });
+  </script>
+</body>
+</html>

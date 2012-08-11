@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-JP" xml:lang="ja-JP">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="ja" />
+  <meta name="robots" content="all" />
+  
+  <title> The Active Generation | Recreation Re-envisioned. </title>
+  
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="https://raw.github.com/xlune/jQuery-vGrid-Plugin/master/jquery.vgrid.min.js" type="text/javascript" charset="UTF-8"></script>
+  <%= javascript_include_tag "jquery.hoverexpand.js" %>
+  <%= javascript_include_tag "jquery.easing.1.3.js" %>
+  <%= javascript_include_tag "modernizr-transitions.js" %>
+
+  <style type="text/css">
+    /*<![CDATA[*/
+    body {
+      margin: 0;
+      background-color: black;
+    }
+    #site-nav {
+      width: 100%;
+      min-height: 70px;
+      float: none;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    #site-nav h1 {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 0.8em;
+      padding-top: 10px;
+    }
+
+    #site-nav h1 a { color: #D26; }
+    #site-nav h1 a:hover { color: #A2C; }
+
+    #site-nav h2 {
+      font-size: 17px;
+      font-weight: normal;
+      margin-bottom: 0.3em;
+    }
+
+    #site-nav ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 12px;
+    }
+
+    #site-nav li {
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+    }
+
+    #site-nav li a {
+      display: block;
+      padding: 3px 5px;
+    }
+
+    #site-nav li.current {
+      background: #C8C5C2;
+    }
+
+    #site-nav li.current a { color: white; }
+    #site-nav li.current a:hover { color: #D26; }
+
+    #site-nav li ul { 
+      margin-bottom: 0;
+    }
+
+    #site-nav li li {
+      font-size: 11px;
+      line-height: 1.4em;
+    }
+
+    #site-nav li li a {
+      padding-left: 15px;
+    }
+
+    #site-nav li.selected li a {
+      padding: 3px;
+      background: none;
+    }
+
+    #site-nav li.selected li a:hover {
+      color: #D26;
+    }
+    #container {
+      background-color: black;
+      overflow: hidden;
+    }
+    #large {
+      width: 40%;
+      margin-bottom: -3px;
+    }
+    #label, #label-bottom-left, #label-bottom-right, #label-med {
+      position:relative;
+      margin-top:-43px;
+      z-index:1000;
+      display:none; 
+      padding-left:20px;
+      padding-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px; 
+      color:white;
+      font:'Copse';
+      font-size: 12px;
+      text-align: right; 
+      background:rgba(0,0,0,0.7);
+      transition-property:display;
+      transition-duration: 5s;
+      -webkit-transition-duration: 5s;
+    }
+    #label-med {
+      margin-top: -28px;
+    }
+    #label-bottom-left {
+      margin-top: -45px;
+    }
+    #label-bottom-right {
+      margin-top: -82px;
+    }
+    #large:hover img {
+      position:relative;
+      z-index:500;
+      box-shadow: 2px 3px 18px black; 
+    }
+    #large:hover #label, #large:hover #label-bottom-left, #large:hover #label-bottom-right, #medium:hover #label-med {
+      display:block;
+      box-shadow: 0px 2px 3px black;
+    }
+    #medium {
+      width: 20%;
+      margin-bottom: -3px;
+    }
+    #medium:hover img {
+      position:relative;
+      z-index:500;
+      box-shadow: 0px 4px 8px black;
+    }
+    #hotspot-1 {
+      position: absolute;
+      left: 240px;
+      bottom:390px;
+      z-index: 3000;
+      background-color: rgba(255,0,0,0.9);
+      height: 125px;
+      width: 125px;
+      text-align: center;
+      line-height: 125px;
+      color: white;
+      border-radius: 125px;
+      box-shadow: 0px 4px 18px black;
+    }
+    #hotspot-1:hover, #hotspot-2:hover, #hotspot-3:hover {
+      background-color: rgba(0,0,0,1);
+    }
+    #hotspot-2 {
+      position: absolute;
+      left: 300px;
+      bottom:125px;
+      z-index: 3000;
+      background-color: rgba(255,0,0,0.9);
+      height: 100px;
+      width: 100px;
+      text-align: center;
+      line-height: 100px;
+      color: white;
+      border-radius: 125px;
+      box-shadow: 0px 4px 18px black;
+    }
+    #hotspot-3 {
+      position: absolute;
+      right: 30px;
+      top:50px;
+      z-index: 3000;
+      background-color: rgba(255,0,0,0.9);
+      height: 150px;
+      width: 150px;
+      text-align: center;
+      line-height: 150px;
+      margin-top: 75px;
+      color: white;
+      border-radius: 125px;
+      box-shadow: 0px 4px 18px black;
+    }
+    fieldset {
+      border:0;
+      margin-left:65.5%; 
+      width:30%;
+      padding-top: 15px;
+      text-align: right;
+    }
+    .login {
+      font-family:'Gill Sans'; 
+      font-size: 12px; 
+      font-weight: normal;
+      line-height: 16px; 
+      padding: 2px;
+      margin-bottom: 10px;
+      margin-top: -13px;
+    }
+    .btn-login {
+      display: inline;
+      *display: inline;
+      padding: 5px;
+      margin-bottom: 0;
+      *margin-left: .3em;
+      font-size: 80%;
+      line-height: 90%;
+      text-align: left;
+      font-weight: normal;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+      vertical-align: middle;
+      cursor: pointer;
+      background-image: -ms-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F0AB02), to(#F09638));
+      background-image: -webkit-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -o-linear-gradient(top, #F0AB02, #F09638);
+      background-image: linear-gradient(top, #F0AB02, #F09638);
+      background-image: -moz-linear-gradient(top, #F0AB02, #F09638);
+      background-repeat: repeat-x;
+      border: 1px solid #000000;
+      *border: 0;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      *zoom: 1;
+    }
+
+    @media (min-width: 460px) and (max-width: 639px) {
+      #container {
+        height: 300px;
+      }
+    }
+
+    @media (min-width: 640px) and (max-width: 767px) {
+      #container {
+        height: 375px;
+      }
+      #site-nav {
+        width: auto;
+        position: relative;
+        left: auto;
+        top: auto;
+        padding-top: 0px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 979px) {
+      #container {
+        height: 415px;
+      }
+    }
+
+    @media (min-width: 980px) and (max-width: 1079px) {
+      #container {
+        height: 490px;
+      }
+    }
+
+    @media (min-width: 1080px) and (max-width: 1199px) {
+      #container {
+        height: 525px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      #container {
+        height: 550px;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    $(function(){
+      $("#grid-content").vgrid({
+        easing: "easeInQuint",
+        time: 400,
+        delay: 5,
+        isAnimated: !Modernizr.csstransitions
+      });
+    });
+    //]]>
+  </script>
+  <script type="text/javascript">
+    $('grid-content div#large').hover(
+          function () {
+            $('div#label').show('slow');
+          },
+          function () {
+            $('div#label').fadeOut('slow');
+          }
+        );​
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#hotspot-1").hover(function(){
+        $(this).animate({height:"250px", width:"250px", left:'240px', bottom:'270px'}, 50);
+      }, function() {
+        $(this).animate({height: '125px', width:"125px", left:'240px', bottom:'390px'}, 50);
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#hotspot-2").hover(function(){
+        $(this).animate({height:"250px", width:"250px"}, 50);
+      }, function() {
+        $(this).animate({height: '100px', width:"100px"}, 50);
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#hotspot-3").hover(function(){
+        $(this).animate({height:"250px", width:"250px"}, 50);
+      }, function() {
+        $(this).animate({height: '150px', width:"150px"}, 50);
+      });
+    });
+  </script>
+</head>
+  <body>
+    <nav id="site-nav" style="height:14%;padding-bottom:20px;">
+        <img src="/assets/White_Logo_6-22.png" style="width:9%; position:absolute;left:46%;margin-top:-10px;;">
+        <div class="depot_form">
+          <form accept-charset="UTF-8" action="/" method="post"><div style="margin:0;padding:0;display:inline;"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Tg1HHle64YylYwBMn1GEOuGCEh5jPy+lNt9Ib8p9DYU="></div>
+            <fieldset>
+              <input class="login" id="username" name="username" placeholder="Username" type="text"><input class="login" id="password" name="password" placeholder="Password" type="password"><br>
+              <input class="btn-login" name="commit" type="submit" value="Login">
+            </fieldset>
+          </form>
+        </div>
+    </nav> <!-- #site-nav -->
+    <div id="container">
+      <div id="hotspot-1">
+          KEY 1
+      </div>
+      <div id="hotspot-2">
+          KEY 2
+      </div>
+      <div id="hotspot-3">
+          KEY 3
+      </div>
+      <div id="grid-content">
+          <div id="large">
+            <img src="/assets/dargie-1.jpg" style="width:100%;">
+            <div id="label"><strong>MENTORS:</strong><br> A network of passionate young athletes to guide you</div>
+          </div>
+          <div id="medium">
+           <img src="/assets/soccerballs.jpg" style="width:100%;">
+           <div id="label-med">GET MOVING</div>
+          </div>
+          <div id="large">
+           <img src="/assets/betsy.jpg" style="width:100%;">
+           <div id="label"><strong>SPORTS TRACKS:</strong> <br> A variety of sports tracks for you to try out</div>
+          </div>
+          <div id="large">
+           <img src="/assets/lifeguardchair.jpeg" style="width:100%;">
+           <div id="label-bottom-left">"Hello"</div>
+          </div>
+          <div id="large">
+            <img src="/assets/dugout.png" style="width:100%;">
+            <div id="label-bottom-right"><strong>FIND YOUR TAG TEAM:</strong> <br> Pair with a P.E. teammate to level up faster</div>
+          </div>
+          <div id="medium">
+            <img src="/assets/erin_parker.png" style="width:100%;">
+            <div id="label-med">REACH YOUR GOALS</div>
+          </div>
+          <div id="medium">
+           <img src="/assets/marcus_rance.jpg" style="width:100%;">
+           <div id="label-med">ASPIRE FOR GREATNESS</div>
+          </div>
+          <div id="medium">
+           <img src="/assets/baseballs.jpg" style="width:100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

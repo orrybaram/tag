@@ -1,0 +1,11 @@
+<%= form_for(@team) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %></br>
+
+    <%= f.label :level %>
+    <%= f.select(:initial_level_id, options_for_select(@initial_levels.collect {|l| [l.name, l.id]})) %></br>
+    <%= hidden_field_tag 'event_id', @event.id %>
+
+    <%= submit_tag 'Submit' %>
+<% end %>

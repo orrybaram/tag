@@ -1,0 +1,17 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <!-- Le styles -->
+    <link href="css/form.css" rel="stylesheet">
+  </head>
+  <body>
+	  <%= form_tag('/users/confirm_parental_consent') do %>
+	    <p style="font-family: 'Rockwell'; color: white; font-size: 16px; text-shadow: 2px 2px #000;">
+        <%= check_box_tag 'parental_consent', 'yes' %> By checking this box, you verify that your parent or guardian has signed your parental consent form, allowing you to activate and use your TAG student account.</p></br>
+  	    <%= submit_tag 'Yes, this is me!', :class => 'btn btn-primary btn-large pull-right', :style => "font-family:Rockwell; font-size: 16px; float: left; postion: relative"%></br></br>  
+    <% end %>
+    <a href="/login" class="btn btn-large pull-right" style="font-family:Rockwell; text-decoration: none; font-size: 16px; float: left; position: relative">This isn't me. Edit info &raquo;</a>
+  </body>
+ </html>

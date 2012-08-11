@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.5.2.js'></script>
+  <%= stylesheet_link_tag 'normalize.css' %>
+  <%= stylesheet_link_tag 'result-light.css' %>
+  <script type='text/javascript' src="https://github.com/imakewebthings/jquery-waypoints/raw/master/waypoints.min.js"></script>
+  
+  <style type='text/css'>
+  	body {
+  		background-image: url(/assets/runningkids.png);
+  		background-repeat: no-repeat;
+  		background-size: 100%;
+  	}
+    #header #hgroup, #nav-inner, .wrap-outer .wrap-inner{
+    width: 960px;
+    margin: 0 auto;
+	}
+	#header #hgroup { background: #c1c1c1; }
+	#nav { 
+		background: rgba(0,0,0,0.2);}
+	#nav-inner { 
+		background: black;
+	}
+	.wrap-outer { 
+	}
+	.wrap-outer .wrap-inner {
+		background: #fff;
+	}
+	#header #hgroup {
+	    padding: 20px;
+	    width: 920px;
+	}
+	#nav {
+	    height: 100px;
+	}
+	.sticky #nav-inner  {
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100px;
+	}
+	#nav a {
+	    display: block;
+	    padding: 12px;
+	    color: #fff;
+	}
+	#nav a.link-active { 
+		color: yellow; 
+	}
+	#nav li { 
+		float: left;
+	}
+	.wrap-outer .wrap-inner {
+	    width: 940px;
+	    padding: 0 10px 100px 10px;
+	}
+	#nav .wrap-inner { 
+		padding: 0; 
+	}
+	#nav #back-top { 
+		background:#333; 
+		padding:10px;
+	}
+
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+    $('#back-top').addClass('hidden');
+    
+    $.waypoints.settings.scrollThrottle = 20;
+    $('#container').waypoint(function(event, direction) {
+        $('#back-top').toggleClass('hidden', direction === "up");
+    }, {
+        offset: '-10%'
+    }).find('#nav').waypoint(function(event, direction) {
+        $(this).parent().toggleClass('sticky', direction === "down");
+        event.stopPropagation();
+    });
+    
+    // Register each section as a waypoint.
+    $('#main > .section').waypoint({ offset: '0'});
+    
+    // The same for all waypoints
+    $('body').delegate('#main > .section', 'waypoint.reached', function(event, direction) {
+        
+        var $active = $(this);
+        
+        if (direction === "up") {
+            $active = $active.prev();
+        }
+        if (!$active.length) $active.end();
+        
+        $('.section-active').removeClass('section-active');
+        $active.addClass('section-active');
+        
+        $('.link-active').removeClass('link-active');
+        $('a[href=#'+$active.attr('id')+']').addClass('link-active');
+        
+    });
+    
+    // Negates the flash of non-active nav.
+    $('body > #header #nav a').click(function() {
+        $(this).addClass('link-active');
+    }).eq(0).addClass('link-active');
+    
+    // Wicked credit to
+    // http://www.zachstronaut.com/posts/2009/01/18/jquery-smooth-scroll-bugs.html
+    var scrollElement = 'html, body';
+    $('html, body').each(function () {
+        var initScrollTop = $(this).attr('scrollTop');
+        $(this).attr('scrollTop', initScrollTop + 1);
+        if ($(this).attr('scrollTop') == initScrollTop + 1) {
+            scrollElement = this.nodeName.toLowerCase();
+            $(this).attr('scrollTop', initScrollTop);
+            return false;
+        }    
+    });
+    
+    // Smooth scrolling for internal links
+    $("a[href^='#']").click(function(event) {
+        event.preventDefault();
+        
+        var $this = $(this),
+        target = this.hash,
+        $target = $(target);
+        
+        $(scrollElement).stop().animate({
+            'scrollTop': $target.offset().top
+        }, 500, 'swing', function() {
+            window.location.hash = target;
+        });
+        
+    });
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="top"></div>
+    <div id="header" class="wrap-outer">
+      <div id="nav" class="wrap-outer">
+        <div id="nav-inner" class="wrap-inner">
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#stuff">Stuff</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a id="back-top" href="#top" title="Back to top">Top</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div id="main" role="main">
+      <div class="section wrap-outer" id="overview">
+        <div class="wrap-inner">                  
+          <h1>Overview</h1>
+        </div>
+      </div>
+    </div><!--! end main-->
+  </div> <!--! end of #container -->
+
+
+  
+</body>
+
+
+</html>

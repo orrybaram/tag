@@ -1,0 +1,13 @@
+<h1>Listing Funs</h1>
+
+<%= form_tag('/user_funs') do |f| %>
+  <% @funs.each do |fun| %>
+      <div>
+      <%= fun.name %></br>     
+      <%= fun.game.name %></br>
+      <%= fun.location %></br>
+      <%= fun.datetime %></br>
+      <%= fun.popularity %></br>
+      <%= submit_tag "register", :name => "register[#{fun.id}]" %></div>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Listing locations</h1>
+
+  <% @locations.each do |location| %>
+      <div><%= location.name %></div>
+      <div><%= location.address %>
+      <%= link_to "Listing Times", {:controller => "events", :action => "datetime_list", :location_id => location.id} %></div>
+  <% end %>
+
+  <%= link_to "Create A Event", {:controller => "events", :action => "new"} %>

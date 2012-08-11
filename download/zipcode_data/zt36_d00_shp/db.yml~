@@ -1,0 +1,7 @@
+  adapter: mysql
+  encoding: utf8
+  database: zipcode_data
+  pool: 5
+  username: root
+  password: '37'
+  host: localhost

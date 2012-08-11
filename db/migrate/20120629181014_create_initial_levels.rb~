@@ -1,0 +1,9 @@
+class CreateInitialLevels < ActiveRecord::Migration
+  def change
+    create_table :initial_levels do |t|
+      t.string :name
+
+      t.timestamps
+    end
+  end
+end

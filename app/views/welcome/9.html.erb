@@ -1,0 +1,617 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-JP" xml:lang="ja-JP">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="ja" />
+  <meta name="robots" content="all" />
+  
+  <title> The Active Generation | Recreation Re-envisioned. </title>
+  
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="https://raw.github.com/xlune/jQuery-vGrid-Plugin/master/jquery.vgrid.min.js" type="text/javascript" charset="UTF-8"></script>
+  <%= javascript_include_tag "jquery.hoverexpand.js" %>
+  <%= javascript_include_tag "jquery.easing.1.3.js" %>
+  <%= javascript_include_tag "modernizr-transitions.js" %>
+
+  <style type="text/css">
+    /*<![CDATA[*/
+    body {
+      margin: 0;
+      background-color: black;
+      letter-spacing: 1px;
+    }
+    #site-nav {
+      width: 100%;
+      min-height: 70px;
+      float: none;
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    #site-nav h1 {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 0.8em;
+      padding-top: 10px;
+    }
+
+    #site-nav h1 a { color: #D26; }
+    #site-nav h1 a:hover { color: #A2C; }
+
+    #site-nav h2 {
+      font-family: "Cabin"; 
+      font-size: 20px;
+      font-weight: normal;
+      color:white;
+      position: absolute;
+      left:120px;
+      top:20px;
+    }
+
+    #site-nav ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 12px;
+    }
+
+    #site-nav li {
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+    }
+
+    #site-nav li a {
+      display: block;
+      padding: 3px 5px;
+    }
+
+    #site-nav li.current {
+      background: #C8C5C2;
+    }
+
+    #site-nav li.current a { color: white; }
+    #site-nav li.current a:hover { color: #D26; }
+
+    #site-nav li ul { 
+      margin-bottom: 0;
+    }
+
+    #site-nav li li {
+      font-size: 11px;
+      line-height: 1.4em;
+    }
+
+    #site-nav li li a {
+      padding-left: 15px;
+    }
+
+    #site-nav li.selected li a {
+      padding: 3px;
+      background: none;
+    }
+
+    #site-nav li.selected li a:hover {
+      color: #D26;
+    }
+    #site-nav div.logo {
+      width:20%;
+      margin-top: -2.5%;
+    }
+    fieldset {
+      border:0;
+      position: absolute;
+      right: 0%;
+      top:12%;
+      width:30%;
+      text-align: right;
+    }
+    .login {
+      font-family:'Gill Sans'; 
+      font-size: 12px; 
+      font-weight: normal;
+      line-height: 16px; 
+      padding: 2px;
+      margin-top: -13px;
+    }
+    .btn-login {
+      display: inline;
+      *display: inline;
+      padding: 5px;
+      margin-bottom: 0;
+      *margin-left: .3em;
+      font-size: 80%;
+      line-height: 90%;
+      text-align: left;
+      font-weight: normal;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+      vertical-align: middle;
+      cursor: pointer;
+      background-image: -ms-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F0AB02), to(#F09638));
+      background-image: -webkit-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -o-linear-gradient(top, #F0AB02, #F09638);
+      background-image: linear-gradient(top, #F0AB02, #F09638);
+      background-image: -moz-linear-gradient(top, #F0AB02, #F09638);
+      background-repeat: repeat-x;
+      border: 1px solid #000000;
+      *border: 0;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      *zoom: 1;
+    }
+
+    #container {
+      background-image: url(/assets/woodenflr.jpg);
+      overflow: scroll;
+      padding-top: 90px;
+      padding-left: 5%;
+      padding-bottom: 20px;
+    }
+    #container h1 {
+      font-family: "Copse";
+      font-weight: 100;
+      letter-spacing: 1.2px;
+      font-size: 40px;
+      color: rgba(250,250,250,0.8);
+      text-shadow: 0px 0px 7px #5E2612;
+    }
+    #featured, #press {
+      background-color: white;
+      box-shadow: 2px 3px 18px #5E2612;
+      width:88.5%;
+      padding: 20px;
+      padding-left: 50px;
+      text-shadow: none;
+      margin-bottom: 50px;
+    }
+    #featured h1, #press h1 {
+      font-family: "Cabin";
+      margin: 2px; 
+      font-weight: 500;
+      color: black;
+      text-shadow: none;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    #featured h2 {
+      margin-bottom: 5px;
+      font-size: 25px;
+      letter-spacing: -0.5px;
+      color: red;
+      text-shadow: 0px 0px 1.5px red;
+    }
+    #featured p {
+      letter-spacing: 0px;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    #featured button {
+      display: inline;
+      *display: inline;
+      padding: 12px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-top: 10px;
+      margin-bottom: 0;
+      *margin-left: .3em;
+      font-size: 25px;
+      font-family: "Cabin";
+      font-weight: normal;
+      color: white;
+      text-align: center;
+      font-weight: normal;
+      vertical-align: middle;
+      cursor: pointer;
+      background-image: -ms-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F0AB02), to(#F09638));
+      background-image: -webkit-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -o-linear-gradient(top, #F0AB02, #F09638);
+      background-image: linear-gradient(top, #F0AB02, #F09638);
+      background-image: -moz-linear-gradient(top, #F0AB02, #F09638);
+      background-repeat: repeat-x;
+      border: 1px solid #F0AB02;
+      *border: 0;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      *zoom: 1;
+    }
+    #video {
+      display:table-cell;
+    }
+    #students {
+      background-image: url(/assets/Dargie-2b.png);
+      background-repeat: no-repeat;
+      background-color: black;
+      background-size: 80% 100%;
+      background-position: right;
+      box-shadow: 2px 3px 18px #5E2612;
+      width:95%;
+      height: 350px;
+      letter-spacing: normal;
+      text-shadow: none;
+      margin-bottom: 50px;
+      overflow: hidden;
+    }
+    #students h1, h2 {
+      font-family: "Cabin";
+      margin: 2px; 
+      font-weight: normal;
+      color: black;
+      text-shadow: none;
+    }
+    #redcircle {
+      z-index: 1000;
+      background-color: rgba(255,0,0,0.8);
+      height: 650px;
+      width: 650px;
+      text-align: left;
+      color: white;
+      border-radius: 650px;
+      margin: 0;
+      margin-left: -12%;
+      margin-top: -13.5%;
+      box-shadow: 2px 3px 18px #5E2612;
+    }
+    #redcircle h2 {
+      padding-top: 25%;
+      padding-left: 22%;
+      color: white;
+      font-family: "Cabin";
+      text-transform: uppercase;
+      font-size: 24px;
+      font-weight: lighter;
+    }
+    #blackcircle {
+      z-index: 2000;
+      background-color: black;
+      height: 150px;
+      width: 150px;
+      text-align: center;
+      color: white;
+      border-radius: 150px;
+      margin: 0;
+    }
+    #programdetails {
+      background-color: white;
+      box-shadow: 2px 3px 18px #5E2612;
+      width:91.5%;
+      padding: 20px;
+      height: auto;
+      letter-spacing: normal;
+      text-shadow: none;
+      margin-bottom: 50px;
+    }
+    #programdetails h1 {
+      text-align: center;
+      font-size: 35px;
+      font-family: "Cabin";
+      color: black;
+      text-shadow: none;
+      font-weight: normal;
+      margin-bottom: 3px;
+    }
+    #programdetails h2 {
+      margin-left: 25px; 
+      font-size: 15px;
+    }
+    #press h2 {
+      font-size: 25px;
+      letter-spacing: -0.5px;
+      color: black;
+    }
+    #press h3 {
+      margin-bottom: 5px;
+      font-size: 15px;
+      letter-spacing: -0.5px;
+      color: black;
+      text-align: center;
+    }
+    #mentors {
+      padding: 0;
+      padding-left: 12%;
+      padding-right: 12%;
+    }
+    #mentors img {
+      margin-bottom: 25px;
+      -moz-box-shadow: 3px 0px 8px #000;
+      -webkit-box-shadow: 3px 0px 8px #000;
+      box-shadow: 3px 0px 8px #000;
+    }
+    #mentors button {
+      display: inline;
+      *display: inline;
+      padding: 10px;
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-bottom: 20px;
+      margin-left: 33%;
+      font-size: 17px;
+      font-family: "Cabin";
+      font-weight: normal;
+      color: white;
+      text-align: center;
+      font-weight: normal;
+      vertical-align: middle;
+      cursor: pointer;
+      background-image: -ms-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F0AB02), to(#F09638));
+      background-image: -webkit-linear-gradient(top, #F0AB02, #F09638);
+      background-image: -o-linear-gradient(top, #F0AB02, #F09638);
+      background-image: linear-gradient(top, #F0AB02, #F09638);
+      background-image: -moz-linear-gradient(top, #F0AB02, #F09638);
+      background-repeat: repeat-x;
+      border: 1px solid #F0AB02;
+      *border: 0;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      *zoom: 1;
+    }
+    .carousel {
+      position: relative;
+      line-height: 1;
+      width: 262px;
+      height: 145px;
+    }
+    .carousel #LearnMore {
+      height: 145px;
+    }
+
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel .item {
+      position: relative;
+      display: none;
+      -webkit-transition: 0.6s ease-in-out left;
+         -moz-transition: 0.6s ease-in-out left;
+          -ms-transition: 0.6s ease-in-out left;
+           -o-transition: 0.6s ease-in-out left;
+              transition: 0.6s ease-in-out left;
+    }
+
+    .carousel .item > img {
+      display: block;
+      line-height: 1;
+      width: 100%;
+      height: 110%;
+    }
+
+    .carousel .active,
+    .carousel .next,
+    .carousel .prev {
+      display: block;
+    }
+
+    .carousel .active {
+      left: 0;
+    }
+
+    .carousel .next,
+    .carousel .prev {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .carousel .next {
+      left: 100%;
+    }
+
+    .carousel .prev {
+      left: -100%;
+    }
+
+    .carousel .next.left,
+    .carousel .prev.right {
+      left: 0;
+    }
+
+    .carousel .active.left {
+      left: -100%;
+    }
+
+    .carousel .active.right {
+      left: 100%;
+    }
+
+    .carousel-control {
+      position: absolute;
+      top: 40%;
+      left: 15px;
+      width: 40px;
+      height: 40px;
+      margin-top: -20px;
+      font-size: 60px;
+      font-weight: 100;
+      line-height: 30px;
+      color: #ffffff;
+      text-align: center;
+      background: #222222;
+      border: 3px solid #ffffff;
+      -webkit-border-radius: 23px;
+         -moz-border-radius: 23px;
+              border-radius: 23px;
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+
+    .carousel-control.right {
+      right: 15px;
+      left: auto;
+    }
+
+    .carousel-control:hover {
+      color: #ffffff;
+      text-decoration: none;
+      opacity: 0.9;
+      filter: alpha(opacity=90);
+    }
+
+    .carousel-caption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 10px 15px 5px;
+      background: #333333;
+      background: rgba(0, 0, 0, 0.75);
+    }
+
+    .carousel-caption h4,
+    .carousel-caption p {
+      color: #ffffff;
+    }
+    @media (min-width: 460px) and (max-width: 639px) {
+      #container {
+        height: 300px;
+      }
+    }
+
+    @media (min-width: 640px) and (max-width: 767px) {
+      #container {
+        height: 375px;
+      }
+      #site-nav {
+        width: auto;
+        position: relative;
+        left: auto;
+        top: auto;
+        padding-top: 0px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 979px) {
+      #container {
+        height: 415px;
+      }
+    }
+
+    @media (min-width: 980px) and (max-width: 1079px) {
+      #container {
+        height: 490px;
+      }
+    }
+
+    @media (min-width: 1080px) and (max-width: 1199px) {
+      #container {
+        height: 525px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      #container {
+        height: 550px;
+      }
+    }
+  </style>
+</head>
+  <body>
+    <nav id="site-nav" style="height:10%;padding-bottom:0.5%;">
+      <div id="logo">
+        <img src="/assets/Logo_Copse_8-09.png" style="width:8%; position:absolute;left:1.5%;margin-top:-15px;">
+        <h2>Making P.E. Fun!</h2>
+      </div>
+      <div class="depot_form">
+        <form accept-charset="UTF-8" action="/" method="post"><div style="margin:0;padding:0;display:inline;"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Tg1HHle64YylYwBMn1GEOuGCEh5jPy+lNt9Ib8p9DYU="></div>
+          <fieldset>
+            <input class="login" id="username" name="username" placeholder="Username" type="text"><input class="login" id="password" name="password" placeholder="Password" type="password"><br>
+            <input class="btn-login" name="commit" type="submit" value="Login">
+          </fieldset>
+        </form>
+      </div>
+    </nav> <!-- #site-nav -->
+    <div id="container">
+      <h1>THE ACTIVE GENERATION</h1>
+      <div id="featured">
+        <div style="display:table-cell;width:60%;vertical-align:top;padding-right:80px;">
+          <h1>Gym Class Re-envisioned.</h2>
+          <h2>Higher Accountability. Way More Fun.</h2>
+          <p>TAG is giving students the ability to set goals & track their own physical activity, a teammate to encourage their success, and mentorship to help them aspire for greatness!</p>
+          <button>REGISTER NOW</button>
+        </div>
+        <div id="video">
+          <video id="my_video_1" class="video-js vjs-default-skin" controls
+            preload="auto" width="450" height="264" data-setup="{}">
+            <source src="my_video.mp4" type='video/mp4'>
+            <source src="my_video.webm" type='video/webm'>
+          </video>
+        </div>
+      </div>
+      <div id="students">
+        <div id="redcircle">
+          <h2>FOR STUDENTS, TAG OFFERS:</h2>
+        </div>
+        <div id="blackcircle"> </div>
+      </div>
+      <div id="programdetails">
+        <h1>THE PROGRAM:</h1>
+        <h2 style="font-size:17px;text-align:center;">Take your TAG ALONG, connect it your computer and upload your points directly to the site:</h2>
+            <table style="margin-top:10px;margin-left:35px;">
+              <tr>
+                <td width="15%" valign="middle"  align="center" style="margin:0;">
+                   <img src="/assets/pedometer.png" style="height:40%;padding-left:5px;">
+                   <h2 style="valign:bottom">TAG ALONG, VERSION 1.0</h2>
+                </td>
+                <td width="14%" valign="middle" align="center" style="margin:0;">
+                  <img src="/assets/cord.png" style="height:18%;padding-left:5px;">
+                </td>
+                <td width="30%" valign="bottom" align="center" style="margin:0;width:20%;">
+                  <img src="/assets/iMAC-frame.png" style="height:40%;margin-bottom:-55%;">
+                  <div id="myCarousel" class="carousel slide">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                      <div class="active item"><img src="/assets/dashboard_shot1.png"></div>
+                      <div class="item">…</div>
+                      <div class="item">…</div>
+                    </div>
+                  </div>
+                  <h2 style="margin-left:-3px; margin-top:100px;margin-bottom:20px;">TAG PORTAL</h2>
+                </td>
+              </tr>
+            </table>
+        <h1 style="padding-bottom:10px;">THE MENTORS:</h1>
+        <div id="mentors">
+          <img src="/assets/erin_headshot.png" style="width:150px;margin-right:40px;">
+          <img src="/assets/erin_headshot.png" style="width:150px;margin-right:40px;">
+          <img src="/assets/erin_headshot.png" style="width:150px;margin-right:40px;">
+          <img src="/assets/erin_headshot.png" style="width:150px;">
+          <button>Browse Our Mentor Gallery</button>
+      </div>
+    </div>
+    <div id="press">
+      <div style="display:inline-block;width:30%;">
+        <img src="/assets/OMD-and-GE-Incubator-Logo_no-background.gif" style="height:40%;margin-bottom:-35px;">
+        <h3><i>Summer 2012 Incubatee</i></h3>
+      </div>
+      <div style="display:inline-block;width:40%;padding-left:20px;valign:top;">
+        <h2>LEARN MORE:</h2>
+        <img src="/assets/SocialChangeIs.png" style="height:30%; padding-top:10px;padding-left:35px;">
+        Our founders are contributors for SocialChange.is! Check out their articles to learn more about TAG's development journey.
+      </div>
+    </div>
+    <% javascript_include_tag 'bootstrap-carousel.js' %>
+    <script type="text/javascript">
+      $('.carousel').carousel('cycle')
+    </script>
+  </body>
+</html>

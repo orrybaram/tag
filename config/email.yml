@@ -1,0 +1,15 @@
+development:
+  :address: yueying.cui@tag.com
+  :port: 587
+  :authentication: plain
+  :user_name: yueying
+  :password: yueying
+  :enable_starttls_auto: true
+production:
+  :address: yueying.cui@tag.com
+  :port: 587
+  :authentication: plain
+  :user_name: yueying
+  :password: yueying
+  :enable_starttls_auto: true
+

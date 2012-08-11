@@ -1,0 +1,10 @@
+<div class="depot_form">
+  <%= form_tag do %>
+    <fieldset>
+      <%= text_field_tag :username, params[:username], :placeholder => "Username", :class => "login"  %><br>
+      <%= password_field_tag :password, params[:password], :placeholder => "Password", :class => "login" %><br>
+      <%= submit_tag "Login", :class => 'btn-login' %>
+  </fieldset>
+<% end %>
+</div>
+

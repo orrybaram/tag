@@ -1,0 +1,31 @@
+<h1>Listing trainers</h1>
+
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Sex</th>
+    <th>Email</th>
+    <th>Telephone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trainers.each do |trainer| %>
+  <tr>
+    <td><%= trainer.firstname %></td>
+    <td><%= trainer.lastname %></td>
+    <td><%= trainer.sex %></td>
+    <td><%= trainer.email %></td>
+    <td><%= trainer.telephone %></td>
+    <td><%= link_to 'Show', trainer %></td>
+    <td><%= link_to 'Edit', edit_trainer_path(trainer) %></td>
+    <td><%= link_to 'Destroy', trainer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trainer', new_trainer_path %>

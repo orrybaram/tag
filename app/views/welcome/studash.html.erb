@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+    <!-- Le styles -->
+    <%= stylesheet_link_tag 'studash' %>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      h1 {
+        font-family: 'Copse';
+      }
+    </style>
+    <%= stylesheet_link_tag 'studash-responsive.css' %>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <div class="nav pull-right">
+              <ul class="nav">
+                <li class="active"><a href="#">How It Works</a></li>
+                <li><a href="#about">Become A Mentor</a></li>
+                <li><a href="#contact">About Us</a></li>
+              </ul>
+          </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="row">
+        <div class="span5" style="background: transparent;">
+          <img alt="TAG" src="/assets/White_Logo_6-22.png" class="brand">
+        </div><br>
+
+        <div class="span4">
+          <h1><strong>PeetaD12</strong><span style="font-family: 'Quicksand';text-shadow:'0 0.05em 0 #ffffff';"> | Log Out </span></h1>
+        </div>
+        <div class="span3">
+          <h4>MY DASHBOARD</h4>
+          <img alt="TAG" src="/assets/avatar.png">
+          <p>TEAM: <strong>EVERDEEN</strong></p>
+          <p>Partner: Jared M.</p>
+          <p>TAG Points:</p>
+          <p><a class="btn" href="#">recommended activity &raquo;</a></p>
+          <p><a class="btn" href="#">watch skill videos &raquo;</a></p>
+        </div>
+        <div class="span2">
+            <div class="best_day">YOUR BEST DAY:
+            <hr>
+            <h6>304</h6>
+            </div>
+        </div>
+    </div>
+    <footer>
+      <p>&copy; TAG USA, Inc. 2012</p>
+    </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "bootstrap-collapse" %>
+    <%= javascript_include_tag "bootstrap-transition" %>
+    <%= javascript_include_tag "bootstrap-alert" %>
+    <%= javascript_include_tag "bootstrap-modal" %>
+    <%= javascript_include_tag "bootstrap-dropdown" %>
+    <%= javascript_include_tag "bootstrap-scrollspy" %>
+    <%= javascript_include_tag "bootstrap-tooltip" %>
+    <%= javascript_include_tag "bootstrap-popover" %>
+        <script>
+          $(function ()
+            { $('#login').popover({ 
+              trigger: 'hover',
+              animate: true,
+              delay: {hide: 2500},
+            });
+          });
+        </script>
+    <%= javascript_include_tag "bootstrap-carousel" %>
+    <%= javascript_include_tag "bootstrap-typeahead" %>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @fun.name %>
+</p>
+
+<p>
+  <b>Sport:</b>
+  <%= @fun.sport_id %>
+</p>
+
+<p>
+  <b>Datetime:</b>
+  <%= @fun.datetime %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @fun.location %>
+</p>
+
+
+<%= link_to 'Edit', edit_fun_path(@fun) %> |
+<%= link_to 'Back', funs_path %>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+    <!-- Le styles -->
+    <%= stylesheet_link_tag 'apptrial' %>
+
+    <style type="text/css">
+      body {
+        padding-top: 10px;
+        padding-bottom: 40px;
+      }
+      h1 {
+        font-family: 'Copse';
+      }
+    </style>
+    <%= stylesheet_link_tag 'apptrial-responsive.css' %>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <img alt="TAG" src="/assets/White_Logo_6-22.png" class="brand">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <div class="nav pull-right">
+              <ul class="nav">
+                <li class="active"><a href="#">How It Works</a></li>
+                <li><a href="#about">Become A Mentor</a></li>
+                <li><a href="#contact">About Us</a></li>
+              </ul>
+          </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+      <div class="content">
+          <img src="/assets/laptop_band.png" class="laptop">
+          <div class="row" style="margin-top:-40%;">
+            <div class="span4">
+              <h1>Recreation Re-envisioned</h1>
+            </div>
+            <div class="span3">
+              <h2>Set a <strong>GOAL</strong></h2>
+            </div>
+            <div class="span3">
+              <h2><strong>CONNECT</strong> with a buddy</h2>
+            </div>
+            <div class="span3">
+              <h2 id="reward" rel="popover" data-content="The more points you earn from your band, the better your chances are for winning rewards like iTunes credits, TAG gear, and more!">Earn <strong>REWARDS</strong></h2>
+            </div>
+            <div class="span3">
+              <h2 id="login" rel="popover" data-title="Register | Log In" data-content="Username:" style="color:red;"><strong>FIND YOUR TEAM &raquo;</strong></h2>
+            </div>
+        </div>
+      </div>
+        
+      
+      </div>
+    <footer>
+      <p>&copy; TAG USA, Inc. 2012</p>
+    </footer>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "bootstrap-collapse" %>
+    <%= javascript_include_tag "bootstrap-transition" %>
+    <%= javascript_include_tag "bootstrap-alert" %>
+    <%= javascript_include_tag "bootstrap-modal" %>
+    <%= javascript_include_tag "bootstrap-dropdown" %>
+    <%= javascript_include_tag "bootstrap-scrollspy" %>
+    <%= javascript_include_tag "bootstrap-tooltip" %>
+    <%= javascript_include_tag "bootstrap-popover" %>
+    <%= javascript_include_tag "bootstrap-carousel" %>
+    <%= javascript_include_tag "bootstrap-typeahead" %>
+  </body>
+</html>

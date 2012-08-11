@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+ <body>
+	        <div class="span10">
+	            <!--Body content--><br>
+	           <h1>My Games</h1>
+	           		<%= form_tag('/user_game_preferences') do %>
+					  <% @games.each do |game| %>
+					    <div><%= check_box_tag "game_ids[]", game.id %>
+					    <%= game.name %></div>
+					  <% end %>
+					  <%= submit_tag 'Register!', :class => 'btn' %>
+<% end %>
