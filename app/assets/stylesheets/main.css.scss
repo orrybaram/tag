@@ -1,16 +1,54 @@
 /* Main Styles */
+@import "mixins";
 
-.header {
-	background-color:black;
+#header {
+	background-color: #434547;
 	background-image: image-url('noise.png');
+	height:55px;
+	@include box-shadow(inset 0 -29px 63px -4px rgba(22, 22, 22, 0.6));
 	#logo {
-		width:100px;
+		width:58px;
 		display:inline-block;
+		height: 58px;
+		position: relative;
+		top: -7px;
 	}
 	ul {
 		display:inline-block;
+		position: relative;
+		top: 1px;
+		margin: 0 0 0 25px;
 		li {
 			display:inline;
+			margin-right:15px;
+			a {
+				color: white;
+				font-weight: bold;
+				text-shadow: 0 1px black;
+			}
+		}
+	}
+	#login {
+		float:right;
+		margin-top:15px;
+		position:relative;
+
+		form {
+			margin-bottom:0;
+		}
+		input {
+			border: 1px solid black;
+			@include box-shadow(0 1px #4E4E4E);
+			
+			&.input-text {
+				width:120px;
+			}
+		}
+		
+		
+		.error {
+			color:red;
+			position:absolute;
 		}
 	}
 }

@@ -1,17 +1,21 @@
-<div class="header">
-	<div id="logo">
-        <img src="White_Logo_6-22.png" alt="The Active Generation">
-   	</div>
-   	<ul>
-        <li><a href="#howitworks">HOW IT WORKS</a></li>
-        <li><a href="#about">ABOUT US</a></li>
-        <li><a href="#contact">CONTACT US</a></li>
-   	</ul>
-    <!-- If user not authenticated -->
-    <div id="login">
-      <%= render :partial => 'sessions/new' %>
-      <% if flash.keep[:notice] %>
-            <p class="error"><%= flash.keep[:notice] %></p>
-      <% end %>
-    </div>
+<div id="header" class="container-fluid">
+	<div class="row-fluid">
+		<div id="logo">
+	        <img src="White_Logo_6-22.png" alt="The Active Generation">
+	   	</div>
+	   	<ul>
+	        <li><a href="#howitworks">HOW IT WORKS</a></li>
+	        <li><a href="#about">ABOUT US</a></li>
+	        <li><a href="#contact">CONTACT US</a></li>
+	   	</ul>
+	    <!-- If user not authenticated -->
+		    
+		    <div id="login">
+		      <%= render :partial => 'sessions/new' %>
+		      <% if flash.keep[:notice] %>
+		            <p class="error"><%= flash.keep[:notice] %></p>
+		      <% end %>
+		    </div>
+		
+	</div>
 </div>

@@ -8,9 +8,11 @@
   <%= yield :head %>
 </head>
 <body>
+
 <%= render :partial => 'layouts/header' %>
 <%= yield %>
-<%= yield :scripts %>
 <%= render :partial => 'layouts/footer' %>
+
+<%= yield :scripts %>
 </body>
 </html>
