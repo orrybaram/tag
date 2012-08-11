@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tag</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>The Active Generation</title>
+  <%= stylesheet_link_tag "bootstrap", "main", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
 <body>
-
+<%= render :partial => 'layouts/header' %>
 <%= yield %>
 <%= yield :scripts %>
-
+<%= render :partial => 'layouts/footer' %>
 </body>
 </html>

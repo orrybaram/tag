@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  layout 'welcome'
   # create
   #   INPUT: email, password (value)
   #   OUPUT:

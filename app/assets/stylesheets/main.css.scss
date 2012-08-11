@@ -1,0 +1,16 @@
+/* Main Styles */
+
+.header {
+	background-color:black;
+	background-image: image-url('noise.png');
+	#logo {
+		width:100px;
+		display:inline-block;
+	}
+	ul {
+		display:inline-block;
+		li {
+			display:inline;
+		}
+	}
+}

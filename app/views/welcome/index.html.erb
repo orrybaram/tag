@@ -1,60 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>The Active Generation</title>
-    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-    <script src="http://vjs.zencdn.net/c/video.js"></script>
-    <%= stylesheet_link_tag "welcome" %>
-  </head>
-  <body>
-    <%= yield %>
-    <div id="page">
-      <div id="navbar">
-      	<div id ="navbar-inner">
-	         <div id="navbar-brand">
-	         	<img src="White_Logo_6-22.png" style="height:110px; margin-top:-10px;margin-bottom:-10px; margin-right:35px;">
-	         </div>
-	         <div class="navbar menu">
-		       <ul>
-		         <li><a href="howitworks">HOW IT WORKS</a></li>
-		         <li class="divider-vertical"></li>
-		         <li><a href="about">ABOUT US</a></li>
-		         <li class="divider-vertical"></li>
-		         <li><a href="contact">CONTACT US</a></li>
-		       </ul>
-		     </div>
-		     <div id="navbar-login">
-		     	<%= render :partial => 'sessions/new' %>
-		     	<% if flash.keep[:notice] %>
-		     	      <p style="color:red; text-align:left;margin-top:-35px;text-indent: 100px;"><%= flash.keep[:notice] %></p>
-		     	<% end %>
-		     	
-	     	</div>
-        </div>
-      </div>
-      <div id="content">
-        <div id="content-row">
-          <div id="content-cell" style="width:40%;">
-            <video id="my_video_1" class="video-js vjs-default-skin" controls
-              preload="auto" width="450" height="264" data-setup="{}">
-              <source src="my_video.mp4" type='video/mp4'>
-              <source src="my_video.webm" type='video/webm'>
-            </video>
-          </div><!--end content cell-->
-          <div id="content-cell" style="width:60%;">
-            <h1>Making Play Social</h1>
-            <h2>LEARN MORE</h2>
-              <a href="#" class='btn-parent'>STUDENTS</a>
-              <a href="#" class='btn-parent'>TEACHERS</a>
-              <a href="#" class='btn-parent'>PARENTS</a>
-          </div><!--end content cell-->
-        </div><!--end content row-->
-      </div><!--end content-->
-      <div id="getting-started">
-      </div>
+<div class="main">
+        <div id="content">
+            <div id="content-row">
+                <div id="content-cell" style="width:40%;">
+                    <video id="my_video_1" class="video-js vjs-default-skin" controls="" preload="auto" width="450" height="264" data-setup="{}">
+                        <source src="my_video.mp4" type='video/mp4'>
+                        <source src="my_video.webm" type='video/webm'>
+                    </video>
+                </div><!--end content cell-->
+                    <div id="content-cell" style="width:60%;">
+                        <h1>Making Play Social</h1>
+                        <h2>LEARN MORE</h2>
+                          <a href="#" class='btn-parent'>STUDENTS</a>
+                          <a href="#" class='btn-parent'>TEACHERS</a>
+                          <a href="#" class='btn-parent'>PARENTS</a>
+                    </div><!--end content cell-->
+            </div><!--end content row-->
+    </div><!--end content-->
+    <div id="getting-started">
     </div>
+</div>
 
-      <div id="footer">&nbsp;</div>
-    </div>
-  </body>
-</html>
+
