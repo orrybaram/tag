@@ -61,8 +61,8 @@ body {
 
 .hero {
 	background: image-url('runners-blurd2.jpg') no-repeat;
-	background-position: 50% 30%;
-	background-size:150%;
+	background-position: 50% 70%;
+	background-size:120%;
 	box-shadow: inset 0 0px 237px 160px rgba(214, 255, 0, 0.2), inset 0 -2px 17px rgba(0, 0, 0, 0.27);
 
 	.row {
@@ -97,9 +97,9 @@ body {
 			padding: 20px 80px;
 			font-size: 24px;
 			font-weight: bold;
-			@include gradient(#F76D02, #EC5804);
-			color: #61210C;
-			text-shadow: 0 1px #FD9E72;
+			@include gradient(#FF4700, #EC3C04);
+			color: #68240C;
+			text-shadow: 0 -1px #F1814C;;
 		}
 		iframe {
 			margin: 50px;
