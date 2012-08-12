@@ -6,11 +6,12 @@ body {
 }
 
 #header {
-	background-color: #434547;
+	background-color: #363636;
 	background-image: image-url('noise.png');
 	height:55px;
-	@include box-shadow(inset 0 -29px 63px -4px rgba(22, 22, 22, 0.6), 0 1px 4px #C7C7C7);
-	border-bottom: 2px solid orange;
+	@include box-shadow(inset 0 -29px 63px -4px rgba(0, 0, 0, 0.6), 0 1px 4px #C7C7C7);
+	border-bottom: 1px solid #3C3C3C;
+	
 	#logo {
 		width:58px;
 		display:inline-block;
@@ -49,12 +50,49 @@ body {
 				width:120px;
 			}
 		}
-		
-		
 		.error {
 			color:red;
 			position:absolute;
 		}
 	}
+}
+
+.hero {
+	background: image-url('runners-blurd.jpg') no-repeat;
+	background-position: 50% 30%;
+	background-size:100%;
+
+	.row {
+		width:960px;
+		margin: 100px auto 0;
+		color:white;
+		text-align:center;
+		text-shadow: 0 1px #050505;
+		
+		h1 {
+			font-size:65px;
+			margin-bottom: 25px;
+		}
+		h2 {
+			font-size: 38px;
+			margin-bottom: 25px;
+		}
+		p {
+			font-size: 16px;
+			width: 70%;
+			margin: 0 auto 25px;
+		}
+		.btn {
+			padding: 20px 80px;
+			font-size: 24px;
+			font-weight: bold;
+			@include gradient(#E9CC35, #DD9414);
+			color: #694C17;
+		}
+		iframe {
+			margin: 50px;
+			box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.16);
+		}
+	} 
 }
 
